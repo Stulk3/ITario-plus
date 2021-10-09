@@ -38,7 +38,10 @@ public class LevelEditorCore : MonoBehaviour
             if(colorMapping.prefabColor.Equals(pixelColor) )
             {
                 position = new Vector2(x,y);
+                
                 Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+                
+                
             }
         }
 

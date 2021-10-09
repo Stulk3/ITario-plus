@@ -187,7 +187,7 @@ public class PlayerMove : MonoBehaviour
         {
             
             unmortal = true;
-            if (!bigState) Deatch();
+            if (!bigState) Death();
             else
             {
                 PlayerPrefs.DeleteKey("Big");
@@ -203,13 +203,13 @@ public class PlayerMove : MonoBehaviour
         }
         if (collision.transform.tag == "deatchZone")
         {
-            Deatch();
+            Death();
             
         }
        
     }
 
-    public void Deatch()
+    public void Death()
     {
         sound.Play("Hit_Hurt3");
         GlobalAudio.Stop();

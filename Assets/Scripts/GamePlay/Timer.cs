@@ -7,14 +7,14 @@ public class Timer : MonoBehaviour
 {
 
     float fpsTime = 0;//количесво кадров 
-    public int nowTime;//время
+    public int currentTime;//время
     Text timeText;
     PlayerMove player;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerMove>();
         timeText = gameObject.GetComponent<Text>();
-        timeText.text = "TIME\n" + Zeropad(nowTime, 3);//пишем тест с помощью функции добавления 0
+        timeText.text = "TIME\n" + Zeropad(currentTime, 3);//пишем тест с помощью функции добавления 0
     }
     void Update()
     {
@@ -22,13 +22,13 @@ public class Timer : MonoBehaviour
         if (fpsTime >= 1)//если прошла секунда
         {
             fpsTime = fpsTime - 1;// то отнимаем секунду от долей
-            nowTime=nowTime-1;
-            timeText.text = "TIME\n" +Zeropad(nowTime , 3);//пишем тест с помощью функции добавления 0
+            currentTime =currentTime -1;
+            timeText.text = "TIME\n" +Zeropad(currentTime , 3);//пишем тест с помощью функции добавления 0
         }
-        if (nowTime <= 0)
+        if (currentTime <= 0)
         {
-            PlayerMove pl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
-            pl.Deatch();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+            player.Death();
         }
     }
     public string Zeropad(int number, int count)//функция добавления 0 (число; количество обязательных символов)
